@@ -1,0 +1,16 @@
+{
+  "compatibility_date": "2025-04-01",
+  "main": "src/index.ts",
+  "name": "lab-openapi",
+  "upload_source_maps": true,
+  "observability": {
+    "enabled": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "lab-openapi",
+      "database_id": "17fceede-8b91-4b2c-a882-e7eaa28e3259"
+    }
+  ]
+}
