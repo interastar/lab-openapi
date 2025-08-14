@@ -1,8 +1,8 @@
 import { ApiException, fromHono } from "chanfana";
 import { Hono } from "hono";
-import { tasksRouter } from "./endpoints/tasks/router";
 import { ContentfulStatusCode } from "hono/utils/http-status";
-import { DummyEndpoint } from "./endpoints/dummyEndpoint";
+import { TokenEndpoint } from "./endpoints/authEndpoint";
+import { FrigosRouter } from "./endpoints/frigos/router";
 
 // Start a Hono app
 const app = new Hono<{ Bindings: Env }>();
@@ -33,18 +33,25 @@ const openapi = fromHono(app, {
   docs_url: "/",
   schema: {
     info: {
-      title: "My Awesome API",
-      version: "2.0.0",
-      description: "This is the documentation for my awesome API.",
+      title: "Lab APIs",
+      version: "1.0.0",
+      description: "APIs de ejemplo.",
     },
+    tags: [
+      { name: 'auth', description: 'Operaciones de seguridad para autenticación y tokens' },
+      { name: 'frigos', description: 'Operaciones de frigos' },
+    ],
   },
 });
 
 // Register Tasks Sub router
-openapi.route("/tasks", tasksRouter);
+//openapi.route("/tasks", tasksRouter);
 
 // Register other endpoints
-openapi.post("/dummy/:slug", DummyEndpoint);
+openapi.post("/auth/token", TokenEndpoint);
+
+// Register Frigos Sub router
+openapi.route("/frigos", FrigosRouter);
 
 // Export the Hono app
 export default app;
