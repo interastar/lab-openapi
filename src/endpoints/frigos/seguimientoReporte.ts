@@ -6,7 +6,7 @@ import { z } from "zod";
 export class SeguimientoReporte extends OpenAPIRoute {
 
   public schema = {
-    tags: ["frigos"],
+    tags: ["Frigos"],
     summary: "Consulta un reporte",
     operationId: "frigos-seguimientoReporte", // This is optional
     request: {
@@ -48,7 +48,7 @@ export class SeguimientoReporte extends OpenAPIRoute {
     }
 
     const seedFromReport = data.params.report; // This is the report number from the request
-    const failProbability = seedFromReport == "99999" ? 1 : 0.9; // 10% chance to fail
+    const failProbability = seedFromReport == 99999 ? 1 : 0.9; // 10% chance to fail
     faker.seed(seedFromReport);
 
     const random_success = faker.datatype.boolean(failProbability);

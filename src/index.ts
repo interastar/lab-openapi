@@ -3,6 +3,7 @@ import { Hono } from "hono";
 import { ContentfulStatusCode } from "hono/utils/http-status";
 import { TokenEndpoint } from "./endpoints/authEndpoint";
 import { FrigosRouter } from "./endpoints/frigos/router";
+import { GioPhoneRouter } from "./endpoints/gio/router";
 
 // Start a Hono app
 const app = new Hono<{ Bindings: Env }>();
@@ -38,8 +39,9 @@ const openapi = fromHono(app, {
       description: "APIs de ejemplo.",
     },
     tags: [
-      { name: 'auth', description: 'Operaciones de seguridad para autenticación y tokens' },
-      { name: 'frigos', description: 'Operaciones de frigos' },
+      { name: 'Auth', description: 'Operaciones de seguridad para autenticación y tokens' },
+      { name: 'Frigos', description: 'Operaciones de Frigos' },
+      { name: 'GioPhone', description: 'Operaciones de GioPhone' },
     ],
   },
 });
@@ -52,6 +54,9 @@ openapi.post("/auth/token", TokenEndpoint);
 
 // Register Frigos Sub router
 openapi.route("/frigos", FrigosRouter);
+
+// Register Gio Phone Sub router
+openapi.route("/giophone", GioPhoneRouter);
 
 // Export the Hono app
 export default app;

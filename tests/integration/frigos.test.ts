@@ -76,8 +76,6 @@ describe("Frigos API Integration Tests", () => {
 
       const values = ['abierto', 'cerrado', 'en revisión', 'en espera de respuesta', 'en proceso', 'resuelto', 'cancelado', 'pendiente de revisión', 'pendiente de respuesta', 'pendiente de resolución', 'pendiente de cierre'];
 
-      console.log("Response body:", body); // Log the response body for debugging
-
       expect(response.status).toBe(200);
       expect(body.success).toBe(true);
       expect(values).toContain(body.estado);

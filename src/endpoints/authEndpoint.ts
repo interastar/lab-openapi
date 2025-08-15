@@ -5,7 +5,7 @@ import { z } from "zod";
 
 export class TokenEndpoint extends OpenAPIRoute {
   public schema = {
-    tags: ["auth"],
+    tags: ["Auth"],
     summary: "Obtiene tiket de autenticación para usar el API",
     operationId: "auth-token", // This is optional
     request: {

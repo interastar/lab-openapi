@@ -5,7 +5,7 @@ import { z } from "zod";
 
 export class LevantarReporte extends OpenAPIRoute {
   public schema = {
-    tags: ["frigos"],
+    tags: ["Frigos"],
     summary: "Levanta un reporte",
     operationId: "frigos-levantarReporte", // This is optional
     request: {
